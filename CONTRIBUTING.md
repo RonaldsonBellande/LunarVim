@@ -12,7 +12,7 @@ One of the best ways to begin contributing in a meaningful way is by helping fin
 
 1. Follow the [Installation](https://www.lunarvim.org/docs/installation) guide
 2. Link your fork with the repository `git remote add upstream https://github.com/lunarvim/LunarVim.git`, or use `gh fork`
-3. That's it! You can now `git fetch upstream` and `git rebase [-i] upstream/rolling` to update your branches with the latest contributions.
+3. That's it! You can now `git fetch upstream` and `git rebase [-i] upstream/master` to update your branches with the latest contributions.
 
 <br />
 
@@ -56,6 +56,7 @@ shfmt -i 2 -ci -bn -l -d .
 - Your PR must pass all the [automated-ci-tests](https://github.com/neovim/neovim/actions).
 - Use a [git-feature-branch](https://www.atlassian.com/git/tutorials/comparing-workflows) instead of the master/rolling branch.
 - Use a [rebase-workflow](http://git-scm.com/book/en/v2/Git-Branching-Rebasing).
+- Title the PR the same way as commit headers
 
 ### Commit Messages
 * Commit header is limited to 72 characters.

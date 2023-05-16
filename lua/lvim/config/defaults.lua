@@ -1,9 +1,11 @@
 return {
   leader = "space",
   reload_config_on_save = true,
-  colorscheme = "tokyonight",
+  colorscheme = "lunar",
   transparent_window = false,
   format_on_save = {
+    ---@usage boolean: format on save (Default: false)
+    enabled = false,
     ---@usage pattern string pattern used for the autocommand (Default: '*')
     pattern = "*",
     ---@usage timeout number timeout in ms for the format request (Default: 1000)
@@ -22,11 +24,40 @@ return {
     -- use config.lua for this not put here
   },
 
+  lazy = {
+    opts = {
+      install = {
+        missing = true,
+        colorscheme = { "lunar", "habamax" },
+      },
+      ui = {
+        border = "rounded",
+      },
+      root = require("lvim.utils").join_paths(get_runtime_dir(), "site", "pack", "lazy", "opt"),
+      git = {
+        timeout = 120,
+      },
+      lockfile = require("lvim.utils").join_paths(get_config_dir(), "lazy-lock.json"),
+      performance = {
+        rtp = {
+          reset = false,
+        },
+      },
+      defaults = {
+        lazy = false,
+        version = nil,
+      },
+      readme = {
+        root = require("lvim.utils").join_paths(get_runtime_dir(), "lazy", "readme"),
+      },
+    },
+  },
+
   autocommands = {},
   lang = {},
   log = {
     ---@usage can be { "trace", "debug", "info", "warn", "error", "fatal" },
-    level = "warn",
+    level = "info",
     viewer = {
       ---@usage this will fallback on "less +F" if not found
       cmd = "lnav",

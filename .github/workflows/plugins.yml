@@ -19,8 +19,9 @@ on:
 
 jobs:
   plugins-version-bump:
+    if: github.repository_owner == 'LunarVim'
     runs-on: ubuntu-latest
-    continue-on-error: true
+    continue-on-error: false
     permissions:
       contents: write
       pull-requests: write
@@ -31,7 +32,7 @@ jobs:
         uses: rhysd/action-setup-vim@v1
         with:
           neovim: true
-          version: nightly
+          version: stable
 
       - name: Install LunarVim
         timeout-minutes: 4
@@ -44,7 +45,7 @@ jobs:
       - name: Re-install LunarVim
         timeout-minutes: 4
         run: |
-          ./utils/installer/uninstall.sh --remove-backups
+          ./utils/installer/uninstall.sh --remove-backups --remove-config
           ./utils/installer/install.sh --local --no-install-dependencies
 
       - name: Run unit-tests
